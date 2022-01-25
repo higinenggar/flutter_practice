@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -38,27 +37,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              SvgPicture.asset(
-                "assets/images/camera_icon.svg",
-                width: 30,
-              ),
-              Text(
-                "Instagram",
-                style: TextStyle(fontFamily: 'Billabong', fontSize: 35),
-              ),
-              InkWell(
-                child: SvgPicture.asset(
-                  "assets/images/message_icon.svg",
-                  width: 30,
-                ),
-                onTap: () {},
-              ),
-            ],
+          leading: IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {},
           ),
+          title: Text('Bottom Navigation Bar'),
+          centerTitle: true,
+          backgroundColor: Color(0xFF7055d2),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.more_horiz),
+              onPressed: () {},
+            ),
+          ],
         ),
         body: screens[currIndex],
         bottomNavigationBar: BottomNavigationBar(

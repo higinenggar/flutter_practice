@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/home.dart';
+import 'package:flutter_practice/food_order/dashboard.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My First App',
-      home: HomePage(),
+      home: HomeOrderPage(),
     );
   }
 }
