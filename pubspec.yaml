@@ -29,9 +29,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.0.0
   flutter_svg: ^0.20.0-nullsafety.3
+  smooth_page_indicator: ^1.0.0+2
   lottie: ^1.2.1
-  animated_text_kit: ^4.2.1
+  
   percent_indicator: ^4.0.0
+  bottom_navy_bar: ^6.0.0
    
 dev_dependencies:
   flutter_test:
