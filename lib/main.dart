@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/onboard/onboarding.dart';
+import 'package:flutter_practice/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My First App',
-      home: OnboardScreen(),
+      home: SplashScreen(),
     );
   }
 }

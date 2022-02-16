@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/login/login_page.dart';
 import 'package:flutter_practice/onboard/model.dart';
 import 'package:flutter_practice/registration/registration_stepper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,6 +27,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 3,
         backgroundColor: Colors.white,
         title: Image.asset(
           'assets/images/logo.png',
@@ -110,21 +113,21 @@ class _OnboardScreenState extends State<OnboardScreen> {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           primary: Colors.white,
-                          backgroundColor: Colors.indigo[600],
-                          minimumSize: const Size(350, 70),
+                          backgroundColor: Color(0xff201568),
+                          minimumSize: const Size(280, 60),
                           elevation: 20,
                         ),
                         child: const Text(
                           'Login Now',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                                builder: (context) => RegistrationStep()),
+                                builder: (context) => LoginPage()),
                           );
                         },
                       ),
@@ -135,7 +138,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         child: const Text(
                           "Don't Have Account",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.indigo,
                           ),
@@ -158,44 +161,55 @@ class _OnboardScreenState extends State<OnboardScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                    child: const Text(
-                      'SKIP',
-                      style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 15,
-                      ),
+                  SmoothPageIndicator(
+                    count: 3,
+                    controller: controller,
+                    effect: WormEffect(
+                      dotWidth: 10.0,
+                      dotHeight: 10.0,
+                      spacing: 13,
+                      dotColor: Colors.grey,
                     ),
-                    onPressed: () => controller.jumpToPage(2),
-                  ),
-                  Center(
-                    child: SmoothPageIndicator(
-                      count: 3,
-                      controller: controller,
-                      effect: WormEffect(
-                        dotWidth: 13.0,
-                        dotHeight: 13.0,
-                        spacing: 16,
-                        dotColor: Colors.grey,
-                      ),
-                      onDotClicked: (index) => controller.animateToPage(
-                        index,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    child: const Text(
-                      'NEXT',
-                      style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 15,
-                      ),
-                    ),
-                    onPressed: () => controller.nextPage(
+                    onDotClicked: (index) => controller.animateToPage(
+                      index,
                       duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
+                      curve: Curves.easeIn,
+                    ),
+                  ),
+                  // Center(
+                  //   child: SmoothPageIndicator(
+                  //     count: 3,
+                  //     controller: controller,
+                  //     effect: WormEffect(
+                  //       dotWidth: 10.0,
+                  //       dotHeight: 10.0,
+                  //       spacing: 13,
+                  //       dotColor: Colors.grey,
+                  //     ),
+                  //     onDotClicked: (index) => controller.animateToPage(
+                  //       index,
+                  //       duration: const Duration(milliseconds: 500),
+                  //       curve: Curves.easeIn,
+                  //     ),
+                  //   ),
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15.0),
+                    child: ElevatedButton(
+                      onPressed: () => controller.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      ),
+                      child: Icon(
+                        Icons.navigate_next,
+                        size: 25,
+                      ),
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(CircleBorder()),
+                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                        backgroundColor: MaterialStateProperty.all(
+                            Colors.indigo[900]), // <-- Button color
+                      ),
                     ),
                   ),
                 ],
